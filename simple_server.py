@@ -1,5 +1,4 @@
 import socket
-import time
 
 # Задаем адрес сервера
 SERVER_ADDRESS = ('localhost', 8686)
@@ -18,7 +17,6 @@ while True:
     data = connection.recv(1024)
     print(str(data))
 
-    time.sleep(10)
     connection.send(bytes('Hello from server!', encoding='UTF-8'))
 
     connection.close()

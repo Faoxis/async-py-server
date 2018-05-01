@@ -1,8 +1,6 @@
 import select
 import socket
 
-import time
-
 SERVER_ADDRESS = ('localhost', 8686)
 
 # Говорит о том сколько дескрипторов единовременно могут быть открыты
@@ -52,7 +50,6 @@ def handle_readables(readables, server):
                 pass
 
             if data:
-                time.sleep(10)
 
                 # Вывод полученных данных на консоль
                 print("getting data: {data}".format(data=str(data)))
@@ -77,6 +74,8 @@ def clear_resource(resource):
     if resource in INPUTS:
         INPUTS.remove(resource)
     resource.close()
+
+    print('closing connection ' + str(resource))
 
 
 def handle_writables(writables):
